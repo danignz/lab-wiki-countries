@@ -12,8 +12,6 @@ export default function CountryDetails({ arrayCountries }) {
     setcountryData(response);
   }, [id]);
 
-  console.log(countryData);
-
   return (
     <div className="col-7">
       {countryData && (

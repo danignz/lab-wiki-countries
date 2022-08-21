@@ -15,18 +15,8 @@ function App() {
 
       <div className="container">
         <div className="row">
-          <div
-            className="col-5"
-            style={{ maxHeight: '90vh', overflow: 'scroll' }}
-          >
-            <div className="list-group">
-              {!countries && <p>Loading</p>}
-              {countries &&
-                countries.map((elem) => (
-                  <CountriesList key={elem.alpha3Code} country={elem} />
-                ))}
-            </div>
-          </div>
+          <CountriesList countries={countries} />
+
           <Routes>
             <Route
               path="/:id"
