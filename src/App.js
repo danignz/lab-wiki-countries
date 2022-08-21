@@ -4,11 +4,10 @@ import { Routes, Route } from 'react-router-dom';
 import CountriesList from './components/CountriesList';
 import CountryDetails from './components/CountryDetails';
 import Navbar from './components/Navbar';
-import countriesData from './countries.json';
 import axios from 'axios';
 
 function App() {
-  const [countries, setCountries] = useState(countriesData);
+  const [countries, setCountries] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
@@ -33,7 +32,7 @@ function App() {
           <Routes>
             <Route
               path="/:id"
-              element={<CountryDetails arrayCountries={countriesData} />}
+              element={<CountryDetails arrayCountries={countries} />}
             />
           </Routes>
         </div>

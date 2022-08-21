@@ -7,10 +7,17 @@ export default function CountryDetails({ arrayCountries }) {
   const [countryData, setcountryData] = useState(null);
 
   useEffect(() => {
-    const response = arrayCountries.find(
-      (element) => element.alpha3Code === id
-    );
-    setcountryData(response);
+    const getCountry = async () => {
+      try {
+        const response = await axios.get(
+          `https://ih-countries-api.herokuapp.com/countries/${id}`
+        );
+        setcountryData(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getCountry();
   }, [id]);
 
   return (
