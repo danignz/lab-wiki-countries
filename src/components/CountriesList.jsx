@@ -1,13 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 export default function CountriesList({ countries }) {
   return (
-    <div className="col-5" style={{ maxHeight: '90vh', overflow: 'scroll' }}>
-      <div className="list-group">
-        {!countries && <p>Loading</p>}
-        {countries &&
-          countries.map((elem) => (
+    <div className="row">
+      <div className="col-5" style={{ maxHeight: '90vh', overflow: 'scroll' }}>
+        <div className="list-group">
+          {countries.map((elem) => (
             <Link
               key={elem.alpha3Code}
               className="list-group-item list-group-item-action"
@@ -20,7 +19,9 @@ export default function CountriesList({ countries }) {
               <p>{elem.name.common}</p>
             </Link>
           ))}
+        </div>
       </div>
+      <Outlet />
     </div>
   );
 }

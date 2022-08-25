@@ -12,31 +12,27 @@ function App() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get('https://ih-countries-api.herokuapp.com/countries');
+        const response = await axios.get(
+          'https://ih-countries-api.herokuapp.com/countries'
+        );
         setCountries(response.data);
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
-    }
+    };
     getData();
-  }, [])
+  }, []);
 
   return (
     <div className="App">
       <Navbar />
-
       <div className="container">
-        <div className="row">
-          <CountriesList countries={countries} />
-
-          <Routes>
-            <Route
-              path="/:id"
-              element={<CountryDetails arrayCountries={countries} />}
-            />
-          </Routes>
-        </div>
-      </div>
+        <Routes>
+            <Route path="/" element={countries ? <CountriesList countries={countries} /> : <p>Loading</p>}>
+                <Route path="/:id" element={<CountryDetails arrayCountries={countries} />} />
+            </Route>
+        </Routes>
+     </div>
     </div>
   );
 }
